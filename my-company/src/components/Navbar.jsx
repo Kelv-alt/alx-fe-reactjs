@@ -5,6 +5,8 @@ const Navbar = () => {
         <nav style={{
             display: 'flex',
             gap: '20px',
+            justifyContent: 'space-around',
+            alignItems: 'center',
             padding: '10px 20px',
             backgroundColor: '#333',
             color: 'white'
