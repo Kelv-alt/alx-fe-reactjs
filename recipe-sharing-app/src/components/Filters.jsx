@@ -1,6 +1,6 @@
 // components/Filters.jsx
 import React from 'react';
-import { useRecipeStore } from '../store/recipeStore';
+import { useRecipeStore } from './recipeStore';
 
 const Filters = () => {
   const setIngredientFilter = useRecipeStore((s) => s.setIngredientFilter);

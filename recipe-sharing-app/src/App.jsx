@@ -1,6 +1,6 @@
 // App.jsx
 import React, { useEffect } from 'react';
-import { useRecipeStore } from './store/recipeStore';
+import { useRecipeStore } from './components/recipeStore';
 import SearchBar from './components/SearchBar';
 import RecipeList from './components/RecipeList';
 import Filters from './components/Filters';
@@ -20,6 +20,7 @@ const App = () => {
       <SearchBar />
       <Filters />
       <RecipeList />
+      
     </div>
   );
 };
