@@ -1,28 +1,17 @@
-// App.jsx
-import React, { useEffect } from 'react';
-import { useRecipeStore } from './components/recipeStore';
-import SearchBar from './components/SearchBar';
-import RecipeList from './components/RecipeList';
-import Filters from './components/Filters';
-import sampleData from './data/sampleRecipes.json';
+// src/App.jsx
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import RecipeDetail from './pages/RecipeDetail';
 
-const App = () => {
-  const setRecipes = useRecipeStore((state) => state.setRecipes);
-
-  useEffect(() => {
-    // Simulate fetching recipe data
-    setRecipes(sampleData);
-  }, [setRecipes]);
-
+function App() {
   return (
-    <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
-      <h1>🍲 Recipe Finder</h1>
-      <SearchBar />
-      <Filters />
-      <RecipeList />
-      
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/recipe/:id" element={<RecipeDetail />} />
+      </Routes>
+    </BrowserRouter>
   );
-};
+}
 
 export default App;
