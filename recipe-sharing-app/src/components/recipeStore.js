@@ -1,47 +1,44 @@
 import create from 'zustand';
 
 export const useRecipeStore = create((set) => ({
-  // === STATE ===
-  recipes: [],                 
-  searchTerm: '',              
-  ingredientFilter: '',        
-  prepTimeFilter: null,        
-  filteredRecipes: [],         
-  setRecipes: (recipes) => set({ recipes, filteredRecipes: recipes }),
+  recipes: [],
+  searchTerm: '',
+  filteredRecipes: [],
+  favorites: [],
+  recommendations: [],
 
+  // Recipe Setup
+  setRecipes: (recipes) =>
+    set({ recipes, filteredRecipes: recipes }),
+
+  // Search Filtering
   setSearchTerm: (term) =>
     set((state) => {
-      const updatedTerm = term.toLowerCase();
+      const lowerTerm = term.toLowerCase();
       const filtered = state.recipes.filter((recipe) =>
-        recipe.title.toLowerCase().includes(updatedTerm)
+        recipe.title.toLowerCase().includes(lowerTerm)
       );
       return { searchTerm: term, filteredRecipes: filtered };
     }),
 
-  setIngredientFilter: (ingredient) => set({ ingredientFilter: ingredient }),
-  setPrepTimeFilter: (time) => set({ prepTimeFilter: time }),
+  // Favorites
+  addFavorite: (recipeId) =>
+    set((state) => ({
+      favorites: [...new Set([...state.favorites, recipeId])],
+    })),
 
-  applyAdvancedFilters: () =>
+  removeFavorite: (recipeId) =>
+    set((state) => ({
+      favorites: state.favorites.filter((id) => id !== recipeId),
+    })),
+
+  // Simple Recommendation Logic
+  generateRecommendations: () =>
     set((state) => {
-      const search = state.searchTerm.toLowerCase();
-      const ingredient = state.ingredientFilter.toLowerCase();
-      const maxTime = state.prepTimeFilter;
-
-      const filtered = state.recipes.filter((recipe) => {
-        const matchesTitle = recipe.title.toLowerCase().includes(search);
-
-        const matchesIngredient = ingredient
-          ? recipe.ingredients?.some((ing) =>
-              ing.toLowerCase().includes(ingredient)
-            )
-          : true;
-
-        const matchesPrepTime =
-          maxTime != null ? recipe.prepTime <= maxTime : true;
-
-        return matchesTitle && matchesIngredient && matchesPrepTime;
-      });
-
-      return { filteredRecipes: filtered };
+      const recommended = state.recipes.filter(
+        (recipe) =>
+          state.favorites.includes(recipe.id) && Math.random() > 0.3
+      );
+      return { recommendations: recommended };
     }),
 }));
