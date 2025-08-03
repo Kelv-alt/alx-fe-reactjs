@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Spaghetti Bolognese",
+    "description": "Classic Italian pasta dish with meat sauce.",
+    "ingredients": ["spaghetti", "ground beef", "tomato sauce"],
+    "prepTime": 30
+  },
+  {
+    "id": 2,
+    "title": "Chicken Stir Fry",
+    "description": "Quick and healthy stir-fried chicken with vegetables.",
+    "ingredients": ["chicken", "soy sauce", "broccoli", "bell pepper"],
+    "prepTime": 20
+  },
+  {
+    "id": 3,
+    "title": "Pancakes",
+    "description": "Fluffy breakfast pancakes served with syrup.",
+    "ingredients": ["flour", "milk", "eggs", "baking powder"],
+    "prepTime": 15
+  }
+]
