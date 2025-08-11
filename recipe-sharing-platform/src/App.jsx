@@ -1,7 +1,10 @@
+import React from 'react';
+import HomePage from './components/HomePage';
+
 function App() {
   return (
-    <div className="text-blue-500 text-2xl font-bold p-4">
-      Tailwind CSS is working! 🎉
+    <div className="min-h-screen bg-gray-100">
+      <HomePage />
     </div>
   );
 }
