@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { Link } from 'react-router-dom';
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
 
@@ -33,6 +33,13 @@ const HomePage = () => {
       </div>
     </div>
   );
+
+  <Link
+  to="/add"
+  className="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition mb-6"
+>
+  Add New Recipe
+</Link>
 };
 
 export default HomePage;
