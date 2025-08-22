@@ -1,11 +1,13 @@
-import RegistrationForm from './components/RegistrationForm';
+import FormikForm from './components/formikForm';
 import React, { useState } from 'react';
+import RegistrationForm from './components/RegistrationForm';
+
 
 function App() {
   return (
     <div>
-      <h1>Controlled Registration Form</h1>
-      <RegistrationForm />
+      <h1>Formik Registration Form</h1>
+      <FormikForm />
     </div>
   );
 }
